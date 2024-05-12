@@ -7,7 +7,7 @@
             <div class="nav-menu">
                 <ul>
                     <li>
-                        หน้าแรก
+                         หน้าแรก
                     </li>
                     <li>
                         เกี่ยวกับ
@@ -34,27 +34,36 @@
                 </div>
             </div>
         </div>
-
+        <v-main class="main">
+            <router-view/>
+        </v-main>
     </div>
-
 </template>
 
 <script>
+
 export default {
 
 }
 </script>
 
 <style>
+
+.main {
+    margin-left: 21rem;
+    width: 100vh;
+    min-height: 100vh;
+}
 .display-container{
     display: flex;
 }
 .menubar-profile {
+    position: fixed; /*  Fixed ให้ตำแหน่งอยู่คงที่*/
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     width: 21rem;
-    max-width: 21rem;
     border: 1px solid #e9e9e9;
-    /* opacity: 100%; */
 }
 
 .logo-text {
@@ -71,23 +80,25 @@ export default {
 
 .nav-menu ul li {
     margin-left: 3.5rem;
-    /* /* margin-left : 0 ; */
     list-style: none;
-    padding: 20px 20px 20px 0px;
+    padding: 25px 25px 25px 0px;
     font-size: 16px;
+    font-weight: 300;
 }
-
 .nav-menu {
-    margin-bottom: 10rem;
+    margin-bottom: auto;
 }
 
 .footer-menu {
+    margin-bottom: 2rem;
     margin-left: 2rem;
 }
 
 .footer-menu hr {
     opacity: 20%;
-    /* margin-top: 25rem; */
+}
+.footer-profile {
+    margin-top: 10px;
 }
 
 .footer-profile span {
