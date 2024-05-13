@@ -6,26 +6,36 @@
             </div>
             <div class="nav-menu">
                 <ul>
+                    <RouterLink to="/me">
+                        <li>
+                            <v-icon color="black" style="margin-bottom: 5px;">mdi-home</v-icon> <span>หน้าแรก</span>
+                        </li>
+                    </RouterLink>
                     <li>
-                         หน้าแรก
+                        <RouterLink to="/aboutme">
+                            <v-icon color="black" style="margin-bottom: 5px;">mdi-account-circle</v-icon> <span>เกี่ยวกับ</span>
+                        </RouterLink>
                     </li>
                     <li>
-                        เกี่ยวกับ
+                        <RouterLink to="/pictureme">
+                           <v-icon color="black" style="margin-bottom: 5px;">mdi-panorama-variant</v-icon> <span>รูปภาพ</span>
+                        </RouterLink>
                     </li>
                     <li>
-                        รูปภาพ
+                        <RouterLink to="/videome">
+                           <v-icon color="black" style="margin-bottom: 5px;">mdi-video-vintage</v-icon> <span>วีดิโอ</span>
+                        </RouterLink>
                     </li>
                     <li>
-                        วีดิโอ
-                    </li>
-                    <li>
-                        โปรไฟล์
+                        <RouterLink to="/contact">
+                            <v-icon color="black" style="margin-bottom: 5px;">mdi-contacts</v-icon> <span>ช่องทางการติดต่อ</span>
+                        </RouterLink>
                     </li>
                 </ul>
             </div>
             <div class="footer-menu">
                 <hr />
-                <v-switch :label="`โหมดกลางวัน`" inset class="switch-light-dark"></v-switch>
+                <v-switch :label="`${model == true ? light : dark}`" inset class="switch-light-dark" @click="model = !model"></v-switch>
                 <div class="footer-profile">
                     <v-avatar color="surface-variant" size="35">
                         <v-img src="../assets/profile.jpg" />
@@ -34,7 +44,8 @@
                 </div>
             </div>
         </div>
-        <v-main class="main">
+        <v-main class="main" >
+            <!-- <p>{{ model }}</p> -->
             <router-view/>
         </v-main>
     </div>
@@ -43,16 +54,36 @@
 <script>
 
 export default {
+    data () {
+      return {
+        model: true,
+        light : "โหมดกลางวัน",
+        dark : "โหมดกลางคืน",
+        main : "main",
+        maindark : "main-dark"
+      }
+    }
+    // method:{
+    //     setTheme() {
 
+    //     }
+    // }
 }
 </script>
 
 <style>
 
 .main {
+    background-color: white;
     margin-left: 21rem;
     width: 100vh;
     min-height: 100vh;
+}
+.maindark {
+    background-color: black;
+    /* margin-left: 21rem;
+    width: 100vh;
+    min-height: 100vh; */
 }
 .display-container{
     display: flex;
@@ -79,14 +110,36 @@ export default {
 }
 
 .nav-menu ul li {
-    margin-left: 3.5rem;
+    /* margin-left: 2rem; */
     list-style: none;
-    padding: 25px 25px 25px 0px;
+    padding: 15px 15px 15px 15px;
     font-size: 16px;
-    font-weight: 300;
 }
 .nav-menu {
     margin-bottom: auto;
+}
+.nav-menu a {
+    text-decoration: none ;
+    color: black;
+    font-weight: 300;   
+    /* padding-top: ; */
+}
+.nav-menu ul :hover {
+    margin-right: 1rem;
+    transition: 0.3s;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+}
+.nav-menu span {
+    margin-left: 10px;
+    padding-top: 10px;
+    margin-top: 10px;
+    /* margin-top: 20px; */
+    /* padding-bottom: 100rem; */
+    text-decoration: none ;
+    color: black;
+    font-weight: 300;
+    font-size: 16px;
 }
 
 .footer-menu {
@@ -106,5 +159,9 @@ export default {
     padding-left: 1.5rem;
     font-size: 16px;
     font-weight: 300;
+}
+.icons {
+    font-size: 14px;
+    color: black;
 }
 </style>

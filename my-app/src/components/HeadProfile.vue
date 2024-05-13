@@ -22,15 +22,9 @@
       </div>
       <div class="profile-detail">
         <p style="font-weight: 600">{{ firstName + " " + lastName }}</p>
-        <p>เกี่ยวกับฉัน : {{titleText}}</p>
-        <!-- <p>วันเกิด : {{birthdate}}</p> -->
+        <p>จบการศึกษา : {{titleText}}</p>
       </div>
     </div>
-    <!-- <v-card width="100">
-      <v-card-title>
-        Hello
-      </v-card-title>
-    </v-card> -->
   </div>
 </template>
 
@@ -41,12 +35,11 @@ export default {
       firstName : "Sukrit" , 
       lastName : "Saeliao" , 
       nickName : "Jamesbond",
-      post : 408 , 
+      post : 9 , 
       follow : 582 , 
       following : 1082 ,
       age : 22 ,
-      titleText : "Hello World. I'm Jamesbond. Nice to meet you." , 
-      birthdate : "30/05/2002"
+      titleText : "สาขาเทคโนโลยีสารสนเทศ (ต่อเนื่อง) คณะวิทยาศาสตร์ มหาวิทยาลัยสงขลานครินทร์" , 
     }
   }
 }
@@ -77,7 +70,7 @@ export default {
   }
   .profile-name-detail p {
     font-size: 18px;
-    padding-right: 5rem;
+    padding-right: 3rem;
   }
   .profile-detail {
     margin-top: 7px;

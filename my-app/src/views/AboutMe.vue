@@ -3,26 +3,23 @@
     <div class="container">
       <HeadProfile class="profile-title" />
     </div>
-    <div class="container">
-      <StoryBar class="story-components"/>
-    </div>
-    <div class="container">
-      <Contents class="content-components"/>
+    <div class="aboutme-page">
+      <hr/>
     </div>
   </div>
 </template>
 
 <script>
 import HeadProfile from '../components/HeadProfile.vue'
-import StoryBar from '../components/StoryBar.vue'
-import Contents from '../components/Content.vue'
+// import StoryBar from '../components/StoryBar.vue'
+// import Contents from '../components/Content.vue'
 
 export default {
   components: {
     // cover , 
     HeadProfile,
-    StoryBar,
-    Contents
+    // StoryBar,
+    // Contents
   }
   // return 
 }
@@ -41,17 +38,11 @@ export default {
   width: 100vh;
 }
 
-.content-components{
+.aboutme-page{
   margin-top: 20px;
-  display: flex;
+  display:block;
   justify-content: center;
-  width: 100vh;
-}
-
-.story-components {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
+  /* text-align: center; */
   width: 100vh;
 }
 
