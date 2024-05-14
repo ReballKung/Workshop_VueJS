@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// import HomeView from '../views/HomeView.vue'
 import Me from '../views/Me.vue'
 import AboutMe from '../views/AboutMe.vue'
+import Login from '../views/Login.vue'
 // import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
@@ -11,7 +12,25 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: Login
+  },
+  {
+    path : '',
+    name : 'customer' ,
+    component: () => import('../views/CustomerView.vue') ,
+    children : [
+      {
+        path: '/home',
+        name: 'homepage',
+        component: () => import('../views/Customer_Home.vue')
+      },
+      {
+        path: '/shop',
+        name: 'homepage',
+        component: () => import('../views/ShopView.vue')
+      },
+      
+    ]
   },
   {
     path: '',
@@ -32,6 +51,11 @@ const routes = [
         path: '/simple',
         name: 'simple',
         component: () => import('../views/Simple.vue')
+      },
+      {
+        path: '/apicon',
+        name: 'apicon',
+        component: () => import('../views/Apicon.vue')
       }
     ]
   },

@@ -11,31 +11,36 @@
                             <v-icon color="black" style="margin-bottom: 5px;">mdi-home</v-icon> <span>หน้าแรก</span>
                         </li>
                     </RouterLink>
-                    <li>
-                        <RouterLink to="/aboutme">
-                            <v-icon color="black" style="margin-bottom: 5px;">mdi-account-circle</v-icon> <span>เกี่ยวกับ</span>
-                        </RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/pictureme">
-                           <v-icon color="black" style="margin-bottom: 5px;">mdi-panorama-variant</v-icon> <span>รูปภาพ</span>
-                        </RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/videome">
-                           <v-icon color="black" style="margin-bottom: 5px;">mdi-video-vintage</v-icon> <span>วีดิโอ</span>
-                        </RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/contact">
-                            <v-icon color="black" style="margin-bottom: 5px;">mdi-contacts</v-icon> <span>ช่องทางการติดต่อ</span>
-                        </RouterLink>
-                    </li>
+                    <RouterLink to="/aboutme">
+                        <li>
+                            <v-icon color="black" style="margin-bottom: 5px;">mdi-account-circle</v-icon>
+                            <span>เกี่ยวกับ</span>
+                        </li>
+                    </RouterLink>
+                    <RouterLink to="/pictureme">
+                        <li>
+                            <v-icon color="black" style="margin-bottom: 5px;">mdi-panorama-variant</v-icon>
+                            <span>รูปภาพ</span>
+                        </li>
+                    </RouterLink>
+                    <RouterLink to="/videome">
+                        <li>
+                            <v-icon color="black" style="margin-bottom: 5px;">mdi-video-vintage</v-icon>
+                            <span>วีดิโอ</span>
+                        </li>
+                    </RouterLink>
+                    <RouterLink to="/contact">
+                        <li>
+                            <v-icon color="black" style="margin-bottom: 5px;">mdi-contacts</v-icon>
+                            <span>ช่องทางการติดต่อ</span>
+                        </li>
+                    </RouterLink>
                 </ul>
             </div>
             <div class="footer-menu">
                 <hr />
-                <v-switch :label="`${model == true ? light : dark}`" inset class="switch-light-dark" @click="model = !model"></v-switch>
+                <v-switch :label="`${model == true ? light : dark}`" inset class="switch-light-dark"
+                    @click="model = !model"></v-switch>
                 <div class="footer-profile">
                     <v-avatar color="surface-variant" size="35">
                         <v-img src="../assets/profile.jpg" />
@@ -44,9 +49,9 @@
                 </div>
             </div>
         </div>
-        <v-main class="main" >
+        <v-main class="main">
             <!-- <p>{{ model }}</p> -->
-            <router-view/>
+            <router-view />
         </v-main>
     </div>
 </template>
@@ -54,14 +59,14 @@
 <script>
 
 export default {
-    data () {
-      return {
-        model: true,
-        light : "โหมดกลางวัน",
-        dark : "โหมดกลางคืน",
-        main : "main",
-        maindark : "main-dark"
-      }
+    data() {
+        return {
+            model: true,
+            light: "โหมดกลางวัน",
+            dark: "โหมดกลางคืน",
+            main: "main",
+            maindark: "main-dark"
+        }
     }
     // method:{
     //     setTheme() {
@@ -72,24 +77,27 @@ export default {
 </script>
 
 <style>
-
 .main {
     background-color: white;
     margin-left: 21rem;
     width: 100vh;
     min-height: 100vh;
 }
+
 .maindark {
     background-color: black;
     /* margin-left: 21rem;
     width: 100vh;
     min-height: 100vh; */
 }
-.display-container{
+
+.display-container {
     display: flex;
 }
+
 .menubar-profile {
-    position: fixed; /*  Fixed ให้ตำแหน่งอยู่คงที่*/
+    position: fixed;
+    /*  Fixed ให้ตำแหน่งอยู่คงที่*/
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -115,28 +123,32 @@ export default {
     padding: 15px 15px 15px 15px;
     font-size: 16px;
 }
+
 .nav-menu {
     margin-bottom: auto;
 }
+
 .nav-menu a {
-    text-decoration: none ;
+    text-decoration: none;
     color: black;
-    font-weight: 300;   
+    font-weight: 300;
     /* padding-top: ; */
 }
+
 .nav-menu ul :hover {
     margin-right: 1rem;
     transition: 0.3s;
     background-color: #f2f2f2;
     border-radius: 10px;
 }
+
 .nav-menu span {
     margin-left: 10px;
     padding-top: 10px;
     margin-top: 10px;
     /* margin-top: 20px; */
     /* padding-bottom: 100rem; */
-    text-decoration: none ;
+    text-decoration: none;
     color: black;
     font-weight: 300;
     font-size: 16px;
@@ -150,6 +162,7 @@ export default {
 .footer-menu hr {
     opacity: 20%;
 }
+
 .footer-profile {
     margin-top: 10px;
 }
@@ -160,6 +173,7 @@ export default {
     font-size: 16px;
     font-weight: 300;
 }
+
 .icons {
     font-size: 14px;
     color: black;
