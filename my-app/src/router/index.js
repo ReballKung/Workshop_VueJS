@@ -30,10 +30,15 @@ const routes = [
         component: () => import('../views/ShopView.vue')
       },
       {
-        path: '/shop/info',
-        name: '',
+        path: '/shop/info/:id',
+        name: 'InfoProduct',
         component: () => import('../views/InfoProduct.vue')
-      }
+      },
+      {
+        path: '/cart',
+        name: 'cart',
+        component: () => import('../views/Cart.vue')
+      },
     ]
   },
   {

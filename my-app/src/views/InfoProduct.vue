@@ -1,30 +1,44 @@
 <template>
-    <div class="display-shopview">
+    <div class="display-shopview-info">
         <div class="link-product">
             <RouterLink to="/home">
-                 <span>Home</span>
+                <span>Home</span>
             </RouterLink>
             <span> > </span>
             <RouterLink to="/shop">
                 All Product
             </RouterLink>
             <span> > </span>
-            <RouterLink to="/shop">
-                TODO : ใส่ชื่อสินค้า
-            </RouterLink>
+            <span> {{ apiProducts.productName }} </span>
         </div>
-        <div class="card-products">
+        <div class="card-products-info">
             <div class="img-products">
                 <v-card width="700" height="600">
-                    <v-img src="../assets/laptop-1205256_1280.jpg" height="600">
+                    <v-img v-bind:src="apiProducts.urlImg" height="600">
                     </v-img>
                 </v-card>
             </div>
             <div class="info-products">
-                <p class="info-products-name">Product Name</p>
-                <p class="info-products-subname">Product model</p>
-                <p class="info-products-subname">Product price</p>
-                <p class="info-products-subname">Product price</p>
+                <p class="info-products-name">{{ apiProducts.productName }}</p>
+                <p class="info-products-subname">{{ apiProducts.type }}</p>
+                <p class="info-products-price">{{ apiProducts.price }} ฿</p>
+                <p class="info-products-stock"> คงเหลือ {{ apiProducts.stock }}</p>
+                <div class="click-for-addcart">
+                    <div>
+                        <v-card outlined class="card-addremove">
+                            <v-btn @click="removechart(1)" outlined style="border: 1px solid white;">
+                                <v-icon>mdi-minus-circle</v-icon>
+                            </v-btn>
+                                <span class="info-amount">{{ postdata.amount }}</span>
+                            <v-btn @click="addchart(1)" outlined style="border: 1px solid white;">
+                                <v-icon>mdi-plus-box</v-icon>
+                            </v-btn>
+                            <v-btn class="btn-addcart" color="warning">
+                                <span>เพิ่มลงตะกร้า</span>
+                            </v-btn>
+                        </v-card>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -38,7 +52,14 @@ export default {
     },
     data() {
         return {
-            apiProducts: []
+            id: this.$route.params.id,
+            apiProducts: [] ,
+            postdata: { //ชุดที่เอาไว้ส่งข้อมูล
+                amount : 0 ,
+            },
+            postdefault : { //ชุดที่ล้างไว้ส่งข้อมูล
+                amount : 0 ,
+            },
         }
     },
     created() {
@@ -50,20 +71,40 @@ export default {
     methods: {
         // API ZONE
         getProductData() {
-            this.axios.get("http://localhost:3000/api/v1/products/").then((res) => {
+            this.axios.get(`http://localhost:3000/api/v1/product/${this.id}`).then((res) => {
                 console.log('data from api', res.data)
                 this.apiProducts = res.data.data
             });
+        },
+        addchart(value) {
+            try {
+                const newAmount = this.postdata.amount + value;
+                if (newAmount <= this.apiProducts.stock) {
+                    this.postdata.amount = newAmount;
+                } else {
+                    alert('จำนวนสินค้ามากกว่าสินค้าในคลัง');
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        removechart(value) {
+            try {
+                const newAmount = this.postdata.amount - value;
+                if (newAmount < 0) {
+                    alert('0')
+                } else {
+                    this.postdata.amount = newAmount;
+                }
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 }
 </script>
 
 <style>
-.select-product {
-    position: fixed;
-}
-
 .img-products {
     margin-top: 30px;
     margin-left: 10rem;
@@ -83,40 +124,47 @@ export default {
     display: flex;
 }
 
-.card-products {
+.card-products-info {
     display: flex;
-}
-
-.info-products {
-    margin-left: 5rem;
-}
-
-.text-productName {
-    font-size: 24px;
-    font-weight: 700;
-    color: black;
-}
-
-.text-detail {
-    font-size: 14px;
-    color: black;
-    font-weight: 500;
-}
-
-.text-price {
-    font-size: 20px;
-    font-weight: 500;
-    color: black;
-}
-
-.btn-cart {
-    display: flex;
-    justify-content: space-between;
 }
 
 .info-products-name {
     font-weight: 700;
     font-size: 42px;
 }
-
+.info-products-subname{
+    font-weight: 300;
+    font-size: 18px;
+    width: 700px;
+}
+.info-products-price{
+    font-weight: 400;
+    font-size: 24px;
+}
+.info-products-stock {
+    font-weight: 300;
+    font-size: 18px;
+}
+.info-products {
+    margin-left: 5rem;
+    margin-top: 2rem;
+}
+.click-for-addcart{
+    display: flex;
+    font-size: 28px;
+}
+.info-amount {
+    margin-right: 3rem;
+    margin-left: 3rem;
+}
+.card-addremove {
+    /* padding-top: 10px; */
+    padding: 10px 10px 10px 10px;
+    position: fixed;
+}
+.btn-addcart{
+    margin-left: 4rem;
+    width: 300px;
+    /* background-color: black; */
+}
 </style>

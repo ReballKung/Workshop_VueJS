@@ -2,7 +2,7 @@
     <div class="display-shopview">
         <div class="link-product">
             <RouterLink to="/home">
-                 <span>Home</span>
+                <span>Home</span>
             </RouterLink>
             <span> > </span>
             <RouterLink to="/shop">
@@ -19,38 +19,43 @@
                         <v-card width="300">
                             <v-hover v-slot="{ hover }">
                                 <v-img v-bind:src="item.urlImg">
-                                        <v-expand-transition >
-                                            <div v-if="hover" 
-                                                class="d-flex justify-md-center transition-fast-in-fast-out "
-                                                style="height: 100%; background-color: #e7e7e7;">
-                                                <v-btn class="btn-goto-info" style="margin-top: 16rem;" color="warning" >
-                                                    <span>รายละเอียดสินค้า</span>
-                                                </v-btn>
-                                            </div>
-                                        </v-expand-transition>
-                                </v-img>
-                            </v-hover> 
-                                <hr />
-                                <v-card-title primary-title>
-                                    <span class="text-productName">{{ item.productName }}</span>
-                                </v-card-title>
-                                <v-card-text>
-                                    <p class="text-detail">{{ item.detail }}</p>
-                                    <div class="btn-cart">
-                                        <p class="text-price">{{ item.price }} ฿</p>
-                                        <div class="btn-select">
-                                            <v-tooltip top>
-                                                <template v-slot:activator="{ on, attrs }">
-                                                    <v-btn color="warning" dark v-bind="attrs" v-on="on">
-                                                        <v-icon color="whilte">mdi-cart-plus</v-icon>
+                                    <v-expand-transition>
+                                        <div v-if="hover"
+                                            class="d-flex justify-md-center transition-fast-in-fast-out btn-select-pro"
+                                            style="height: 100%; background-color: #e7e7e7; opacity: 70%;">
+                                            <div>
+                                                <RouterLink :to="{ name: 'InfoProduct', params: { id: item._id } }">
+                                                    <v-btn class="btn-goto-info" style="margin-top: 16rem;" color="warning">
+                                                        <span>รายละเอียดสินค้า</span>
                                                     </v-btn>
-                                                </template>
-                                                <span>เพิ่มตะกร้า</span>
-                                            </v-tooltip>
+                                                </RouterLink>
+                                            </div>
                                         </div>
+                                    </v-expand-transition>
+                                </v-img>
+                            </v-hover>
+                            <hr />
+                            <v-card-title primary-title>
+                                <span class="text-productName">{{ item.productName }}</span>
+                            </v-card-title>
+                            <v-card-text>
+                                <p class="text-detail">{{ item.detail }}</p>
+                                <div class="btn-cart">
+                                    <p class="text-price">{{ item.price }} ฿</p>
+                                    <!-- {{ productId }} -->
+                                    <div class="btn-select">
+                                        <v-tooltip top>
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-btn color="warning" dark v-bind="attrs" v-on="on">
+                                                    <v-icon color="whilte">mdi-cart-plus</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <span>เพิ่มตะกร้า</span>
+                                        </v-tooltip>
                                     </div>
-                                </v-card-text>
-                         </v-card>
+                                </div>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </div>
             </v-row>
@@ -66,7 +71,9 @@ export default {
     },
     data() {
         return {
-            apiProducts: []
+            apiProducts: [] ,
+            id: ""
+            // productId: this.apiProducts._id
         }
     },
     created() {
@@ -83,7 +90,8 @@ export default {
                 this.apiProducts = res.data.data
             });
         }
-    }
+    },
+    
 }
 </script>
 
@@ -94,6 +102,11 @@ export default {
 
 .display-shopview {
     display: flex;
+}
+
+.btn-select-pro a {
+    text-decoration: none;
+    color: black;
 }
 
 .link-product a {
@@ -111,7 +124,7 @@ export default {
 }
 
 .card-products {
-    margin-left: 15rem;
+    padding-left: 15rem;
     margin-top: 5rem;
 }
 
@@ -120,7 +133,7 @@ export default {
     font-weight: 700;
     color: black;
 }
-
+    
 .text-detail {
     font-size: 14px;
     color: black;
@@ -137,5 +150,4 @@ export default {
     display: flex;
     justify-content: space-between;
 }
-
 </style>

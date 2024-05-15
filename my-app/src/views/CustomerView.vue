@@ -1,9 +1,11 @@
 <template>
   <div>
     <div class="header-bar">
-        <div class="logo-text">
-            <p>E-Soft Shop</p>
-        </div>
+        <RouterLink to="/home">
+            <div class="logo-text">
+                <p>E-Soft Shop</p>
+            </div>
+        </RouterLink>
         <div class="menu-header-bar">
             <ul>
                 <RouterLink to="/home">
@@ -21,18 +23,41 @@
             </ul>
         </div>
         <div class="menu-header-bar-02">
-            <v-icon color="black" class="icon-cart">mdi-cart</v-icon> 
-            <RouterLink to="/">
-                <v-btn color="red">
-                    <span style="color: white;">Logout</span>
-                </v-btn>
+            <RouterLink to="/cart">
+                <v-icon color="black" class="icon-cart">mdi-cart</v-icon> 
             </RouterLink>
+            <!-- <RouterLink to="/"> -->
+                <div class="text-center">
+                    <v-menu offset-y>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                        color="primary"
+                        dark
+                        v-bind="attrs"
+                        v-on="on"
+                        >
+                        Profile
+                        </v-btn>
+                    </template>
+                    <v-list>
+                        <v-list-item>
+                            <v-list-item-title color="red">
+                                <RouterLink to="/">
+                                    <span style="color: red;" class="logout-text">Logout</span>         
+                                </RouterLink>
+                            </v-list-item-title>
+                        </v-list-item>
+                    </v-list>
+                    </v-menu>
+                </div>
+                <!-- <v-btn color="red">
+                    <span style="color: white;">Logout</span>
+                </v-btn> -->
+            <!-- </RouterLink> -->
         </div>
     </div>
-    <v-main class="main">
         <!-- <p>{{ model }}</p> -->
         <router-view />
-    </v-main>
   </div>
 </template>
 
@@ -43,6 +68,10 @@ export default {
 </script>
 
 <style>
+    .header-bar a {
+        text-decoration: none;
+        color: black;
+    }
     .header-bar {
         padding: 15px 15px 7px 15px;
         display: flex;
@@ -76,9 +105,13 @@ export default {
         /* padding: 20px 40px 7px 40px; */
     }
     .menu-header-bar-02 {
+        display: flex;
         padding: 13px 20px 0px 20px;
     }
     .icon-cart {
         padding-right: 50px;
+    }
+    a{
+        text-decoration: none;
     }
 </style>
