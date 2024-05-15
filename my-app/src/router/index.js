@@ -29,7 +29,11 @@ const routes = [
         name: 'homepage',
         component: () => import('../views/ShopView.vue')
       },
-      
+      {
+        path: '/shop/info',
+        name: '',
+        component: () => import('../views/InfoProduct.vue')
+      }
     ]
   },
   {

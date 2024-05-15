@@ -6,13 +6,22 @@
         </div>
         <div class="menu-header-bar">
             <ul>
-                <li>Home</li>
-                <li>Shop</li>
-                <li>Blog</li>
-                <li>Contact Us</li>
+                <RouterLink to="/home">
+                    <li><span>Home</span></li>
+                </RouterLink>
+                <RouterLink to="/shop">
+                    <li><span>Shop</span></li>
+                </RouterLink>
+                <RouterLink to="/blog">
+                    <li><span>Blog</span></li>
+                </RouterLink>
+                <RouterLink to="/blog">
+                    <li><span>Contact Us</span></li>
+                </RouterLink>
             </ul>
         </div>
         <div class="menu-header-bar-02">
+            <v-icon color="black" class="icon-cart">mdi-cart</v-icon> 
             <RouterLink to="/">
                 <v-btn color="red">
                     <span style="color: white;">Logout</span>
@@ -52,9 +61,24 @@ export default {
         /* padding-right: 10rem; */
     }
     .menu-header-bar ul li {
-        padding: 20px 40px 7px 40px;
+        padding: 20px 40px 20px 40px;
+    }
+    .menu-header-bar ul :hover{
+        transition: 0.3s;
+        background-color: #f2f2f2;
+        color: black;
+        border-radius: 10px;
+    }
+    .menu-header-bar a {
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        /* padding: 20px 40px 7px 40px; */
     }
     .menu-header-bar-02 {
         padding: 13px 20px 0px 20px;
+    }
+    .icon-cart {
+        padding-right: 50px;
     }
 </style>

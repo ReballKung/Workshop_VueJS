@@ -2,7 +2,7 @@
     <div class="display-shopview">
         <div class="link-product">
             <RouterLink to="/home">
-                Home
+                 <span>Home</span>
             </RouterLink>
             <span> > </span>
             <RouterLink to="/shop">
@@ -17,22 +17,40 @@
                 <div v-for="(item, index) in apiProducts" :key="index">
                     <v-col cols="12">
                         <v-card width="300">
-                            <v-img v-bind:src="item.urlImg">
-                            </v-img>
-                            <hr/>
-                            <v-card-title primary-title>
-                                <span class="text-productName">{{ item.productName }}</span>
-                            </v-card-title>
-                            <v-card-text>
-                                <p class="text-detail">{{ item.detail }}</p>
-                                <div class="btn-cart">
-                                    <p class="text-price">{{ item.price }} ฿</p>
-                                    <v-btn class="btn-select" color="warning">
-                                        <v-icon color="whilte">mdi-cart-plus</v-icon>
-                                    </v-btn>
-                                </div>
-                            </v-card-text>
-                        </v-card>
+                            <v-hover v-slot="{ hover }">
+                                <v-img v-bind:src="item.urlImg">
+                                        <v-expand-transition >
+                                            <div v-if="hover" 
+                                                class="d-flex justify-md-center transition-fast-in-fast-out "
+                                                style="height: 100%; background-color: #e7e7e7;">
+                                                <v-btn class="btn-goto-info" style="margin-top: 16rem;" color="warning" >
+                                                    <span>รายละเอียดสินค้า</span>
+                                                </v-btn>
+                                            </div>
+                                        </v-expand-transition>
+                                </v-img>
+                            </v-hover> 
+                                <hr />
+                                <v-card-title primary-title>
+                                    <span class="text-productName">{{ item.productName }}</span>
+                                </v-card-title>
+                                <v-card-text>
+                                    <p class="text-detail">{{ item.detail }}</p>
+                                    <div class="btn-cart">
+                                        <p class="text-price">{{ item.price }} ฿</p>
+                                        <div class="btn-select">
+                                            <v-tooltip top>
+                                                <template v-slot:activator="{ on, attrs }">
+                                                    <v-btn color="warning" dark v-bind="attrs" v-on="on">
+                                                        <v-icon color="whilte">mdi-cart-plus</v-icon>
+                                                    </v-btn>
+                                                </template>
+                                                <span>เพิ่มตะกร้า</span>
+                                            </v-tooltip>
+                                        </div>
+                                    </div>
+                                </v-card-text>
+                         </v-card>
                     </v-col>
                 </div>
             </v-row>
@@ -114,8 +132,10 @@ export default {
     font-weight: 500;
     color: black;
 }
+
 .btn-cart {
     display: flex;
     justify-content: space-between;
 }
+
 </style>
