@@ -24,7 +24,7 @@
         </div>
         <div class="menu-header-bar-02">
             <RouterLink to="/cart">
-                <v-icon color="black" class="icon-cart">mdi-cart</v-icon> 
+                <v-icon color="black" class="icon-cart">mdi-cart {{ chatid }}</v-icon> 
             </RouterLink>
             <!-- <RouterLink to="/"> -->
                 <div class="text-center">
@@ -36,7 +36,7 @@
                         v-bind="attrs"
                         v-on="on"
                         >
-                        Profile
+                        Profile 
                         </v-btn>
                     </template>
                     <v-list>
@@ -50,6 +50,8 @@
                     </v-list>
                     </v-menu>
                 </div>
+
+                
                 <!-- <v-btn color="red">
                     <span style="color: white;">Logout</span>
                 </v-btn> -->
@@ -62,8 +64,18 @@
 </template>
 
 <script>
+import { EventBus } from '@/EventBus'
 export default {
-
+    data(){
+        return{
+            chatid : ''
+        }
+    },
+    methods:{
+        getCart(){
+            EventBus.$emit('getCart')
+        },
+    }
 }
 </script>
 

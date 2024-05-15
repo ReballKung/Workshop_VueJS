@@ -9,10 +9,11 @@
     <div class="input-login" v-show="!isShow">
       <p class="title-welcome">Create New Account </p>
       <p class="text-welcome">Please enter detail</p>
-      <v-text-field label="Firstname" variant="solo-filled"></v-text-field>
-      <v-text-field label="Surname" variant="solo-filled"></v-text-field>
-      <v-text-field label="Username" variant="solo-filled"></v-text-field>
-      <v-text-field label="Password" variant="solo-filled"></v-text-field>
+      <v-text-field label="Firstname" v-model="postdata.firstname" variant="solo-filled"></v-text-field>
+      <v-text-field label="Surname" v-model="postdata.surname" variant="solo-filled"></v-text-field>
+      <v-text-field label="Username" v-model="postdata.username" variant="solo-filled"></v-text-field>
+      <v-text-field label="Password" v-model="postdata.password" variant="solo-filled"></v-text-field>
+      <v-text-field label="Confirm Password" v-model="postdata.username" variant="solo-filled"></v-text-field>
     </div>
     <div class="link-resgister">
       <button @click="toggleVisible()">{{ isShow ? "Register" : "If you have Account ?" }}</button>
@@ -30,6 +31,21 @@ export default {
   data() {
     return {
       isShow: true,
+      postdata: { //ชุดที่เอาไว้ส่งข้อมูล
+        username: '',
+        password: '',
+        confirmPassword: '',
+        firstname: '',
+        surname: '',
+
+      },
+      postdefault: { //ชุดที่ล้างไว้ส่งข้อมูล
+        username: '',
+        password: '',
+        confirmPassword: '',
+        firstname: '',
+        surname: ''
+      },
     }
   },
   methods: {
@@ -84,5 +100,4 @@ export default {
 .input-login span {
   color: white;
 }
-
 </style>

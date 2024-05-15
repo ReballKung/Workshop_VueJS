@@ -12,7 +12,7 @@ import CardLogin from '../components/CardLogin.vue'
 export default {
     components : {
         CardLogin
-    }
+    },
 }
 </script>
 

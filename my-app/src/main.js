@@ -6,6 +6,9 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+// import VueSweetalert2 from 'vue-sweetalert2'
+
+// Vue.use();
 
 Vue.use(VueAxios, axios)
 
