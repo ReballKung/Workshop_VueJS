@@ -12,6 +12,7 @@
 import simcom from '../components/SimpleComponent.vue'
 import {EventBus } from '@/EventBus'
 export default {
+    
     components : {
         simcom
     },

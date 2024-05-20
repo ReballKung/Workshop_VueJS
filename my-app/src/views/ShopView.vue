@@ -203,13 +203,14 @@ export default {
         async saveDelete(item) {
             try {
                 const result = await Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
+                    title: "ลบสินค้า ?",
+                    text: `คุณต้องการลบสินค้านี้ใช่หรือไม่`,
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
+                    cancelButtonText: "ยกเลิก",
+                    confirmButtonText: "ลบ",
                 });
 
                 if (result.isConfirmed) {

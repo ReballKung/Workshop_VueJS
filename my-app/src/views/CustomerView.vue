@@ -42,9 +42,7 @@
                     <v-list>
                         <v-list-item>
                             <v-list-item-title color="red">
-                                <RouterLink to="/">
-                                    <span style="color: red;" class="logout-text">Logout</span>         
-                                </RouterLink>
+                                <span style="color: red;" class="logout-text" @click="logout()">Logout</span>         
                             </v-list-item-title>
                         </v-list-item>
                     </v-list>
@@ -65,6 +63,8 @@
 
 <script>
 import { EventBus } from '@/EventBus'
+import Swal from "sweetalert2"
+
 export default {
     data(){
         return{
@@ -75,6 +75,17 @@ export default {
         getCart(){
             EventBus.$emit('getCart')
         },
+        logout() {
+            Swal.fire({
+                title: "ออกจากระบบ",
+                text: "ขอบคุณที่ใช้บริการ กรุณารอสักครู่",
+                icon: "success",
+                showConfirmButton: false
+            });
+            setTimeout(function () {
+                window.location.href = '/';
+            }, 2000);
+        }
     }
 }
 </script>

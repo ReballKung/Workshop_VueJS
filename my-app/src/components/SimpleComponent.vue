@@ -8,7 +8,7 @@
 <script>
 import {EventBus } from '@/EventBus'
 export default {
-    props:['name'],
+    props:['username' , 'password'],
     mounted() {
         EventBus.$on('SimComAlert' , this.SimComAlert)
     },
